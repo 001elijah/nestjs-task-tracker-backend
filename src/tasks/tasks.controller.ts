@@ -4,44 +4,37 @@ import {
   Post,
   Put,
   Delete,
+  Query,
   Param,
   Body,
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
-  @Get() getTasks() {
-    return [];
+  constructor(private readonly tasksService: TasksService) {}
+  @Get() getTasks(@Query('reminder') reminder: 'true' | 'false') {
+    // const service = new TasksService();
+    return this.tasksService.getTasks(reminder);
   }
 
   @Get(':id') getOneTask(@Param('id') id: string) {
-    console.log('get');
-    return { id };
+    return this.tasksService.getTask(+id);
   }
 
   @Post() createTask(@Body() createTaskDto: CreateTaskDto) {
-    return {
-      id: createTaskDto.id,
-      text: createTaskDto.text,
-      day: createTaskDto.day,
-      reminder: createTaskDto.reminder,
-    };
+    return this.tasksService.createTask(createTaskDto);
   }
 
   @Put(':id') updateTask(
     @Param('id') id: string,
     @Body() updateTaskDto: UpdateTaskDto,
   ) {
-    return {
-      id,
-      text: updateTaskDto.text,
-      day: updateTaskDto.day,
-      reminder: updateTaskDto.reminder,
-    };
+    return this.tasksService.updateTask(+id, updateTaskDto);
   }
   @Delete(':id') deleteTask(@Param('id') id: string) {
-    return { id };
+    return this.tasksService.removeTask(+id);
   }
 }
