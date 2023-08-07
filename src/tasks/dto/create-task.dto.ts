@@ -1,4 +1,4 @@
-import { MinLength } from 'class-validator';
+import { IsEnum, MinLength } from 'class-validator';
 
 export class CreateTaskDto {
   id: number;
