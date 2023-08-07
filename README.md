@@ -5,6 +5,8 @@ The inspiration for creation of this project was a desire to discover Angular an
 The project is deployed on [Railway](https://railway.app/). The domain (https://nestjs-task-tracker-backend-production.up.railway.app/) is  connected to my [angular-task-tracker](https://github.com/001elijah/angular-task-tracker).
 To run the project on your machine either clone the repository [angular-task-tracker](https://github.com/001elijah/angular-task-tracker) and run `npm start` or open the [GH live page](https://001elijah.github.io/angular-task-tracker/) the project is deployed on.
 
+Thanks to The Net Ninja for the [Nest.js crash course](https://www.youtube.com/watch?v=pcX97ZrTE6M&list=PL4cUxeGkcC9g8YFseGdkyj9RH9kVs_cMr&ab_channel=TheNetNinja)
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
