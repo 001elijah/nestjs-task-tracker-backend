@@ -7,6 +7,7 @@ import {
   Query,
   Param,
   Body,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -21,7 +22,11 @@ export class TasksController {
   }
 
   @Get(':id') getOneTask(@Param('id') id: string) {
-    return this.tasksService.getTask(+id);
+    try {
+      return this.tasksService.getTask(+id);
+    } catch (error) {
+      throw new NotFoundException();
+    }
   }
 
   @Post() createTask(@Body() createTaskDto: CreateTaskDto) {
@@ -32,9 +37,18 @@ export class TasksController {
     @Param('id') id: string,
     @Body() updateTaskDto: UpdateTaskDto,
   ) {
-    return this.tasksService.updateTask(+id, updateTaskDto);
+    try {
+      return this.tasksService.updateTask(+id, updateTaskDto);
+    } catch (error) {
+      throw new NotFoundException();
+    }
   }
+
   @Delete(':id') deleteTask(@Param('id') id: string) {
-    return this.tasksService.removeTask(+id);
+    try {
+      return this.tasksService.removeTask(+id);
+    } catch (error) {
+      throw new NotFoundException();
+    }
   }
 }
