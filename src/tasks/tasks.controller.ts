@@ -10,12 +10,15 @@ import {
   NotFoundException,
   ParseIntPipe,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TasksService } from './tasks.service';
+import { IsLoggedInGuard } from 'src/is-logged-in/is-logged-in.guard';
 
 @Controller('tasks')
+//@UseGuards(IsLoggedInGuard) // to protect all the routes
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
   @Get() getTasks(@Query('reminder') reminder: 'true' | 'false') {
@@ -31,7 +34,10 @@ export class TasksController {
     }
   }
 
-  @Post() createTask(@Body(new ValidationPipe()) createTaskDto: CreateTaskDto) {
+  //@UseGuards(IsLoggedInGuard) here to protect a specific route
+  @Post() @UseGuards(IsLoggedInGuard) createTask(
+    @Body(new ValidationPipe()) createTaskDto: CreateTaskDto,
+  ) {
     return this.tasksService.createTask(createTaskDto);
   }
 
