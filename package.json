@@ -67,9 +67,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node",
-    "engines": {
-      "node": ">=14 <15"
-    }
+    "testEnvironment": "node"
+  },
+  "engines": {
+    "node": ">=14 <15"
   }
 }
