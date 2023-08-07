@@ -8,6 +8,8 @@ import {
   Param,
   Body,
   NotFoundException,
+  ParseIntPipe,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -21,15 +23,15 @@ export class TasksController {
     return this.tasksService.getTasks(reminder);
   }
 
-  @Get(':id') getOneTask(@Param('id') id: string) {
+  @Get(':id') getOneTask(@Param('id', ParseIntPipe) id: number) {
     try {
-      return this.tasksService.getTask(+id);
+      return this.tasksService.getTask(id);
     } catch (error) {
       throw new NotFoundException();
     }
   }
 
-  @Post() createTask(@Body() createTaskDto: CreateTaskDto) {
+  @Post() createTask(@Body(new ValidationPipe()) createTaskDto: CreateTaskDto) {
     return this.tasksService.createTask(createTaskDto);
   }
 
