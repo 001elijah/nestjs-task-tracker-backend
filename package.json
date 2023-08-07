@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=14 <15"
+  },
   "name": "nestjs-task-tracker-backend",
   "version": "0.0.1",
   "description": "",
@@ -68,8 +71,5 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "engines": {
-    "node": ">=14 <15"
   }
 }
