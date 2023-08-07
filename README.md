@@ -1,3 +1,10 @@
+# AngularTaskTracker Nest.js Backend
+
+The inspiration for creation of this project was a desire to discover Angular and Nest.js and compare them to React and Express. My conclusion upon completence of the project is that React is more flexible, but more vulnerable, and Angular in contrast is more secure hence it has more structure. Nest.js in it's turn is more convenient than vanilla Express, but it takes time to get used to it.
+
+The project is connected to my [angular-task-tracker](https://github.com/001elijah/angular-task-tracker).
+To run the project on your machine either clone the repository [angular-task-tracker](https://github.com/001elijah/angular-task-tracker) and run `npm start` or open the [GH live page](https://001elijah.github.io/angular-task-tracker/) the project is deployed on.
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
